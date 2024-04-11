@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="components/input.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        h2 {
+            margin-top: 0;
+            font-weight: 600;
+            color: #333;
+        }
+    
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+    
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 10px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    
+        .error {
+            color: #ff0000; /* Warna merah untuk pesan error */
+            margin-top: 5px;
+            font-size: 14px;
+        }
+    
+        .password-container {
+            position: relative;
+        }
+    
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #999;
+        }
+    
+        .toggle-password:hover {
+            color: #666;
+        }
+        button[type="submit"] {
+        background-color: #4CAF50; /* Warna hijau */
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+        button[type="submit"]:hover {
+        background-color: #45a049; /* Warna hijau yang sedikit lebih gelap saat hover */
+    }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <h2>Form Validation</h2>
+        <!-- Notifikasi -->
+        <div id="notification" style="display: none; position: fixed; top: 20px; right: 20px; padding: 10px; border-radius: 5px; font-weight: bold; color: white;"></div>
+        <!-- Icon Notifikasi -->
+        <i id="notification-icon"></i>
+
+        <form id="validationForm" onsubmit="handleSubmit(event)">
+            <!-- Bagian Form -->
+            <label>Email:</label>
+            <input type="text" id="emailInput" oninput="validateEmail()">
+            <div id="emailError" class="error"></div>
+            
+            <label>Date (DD/MM/YYYY):</label>
+            <input type="text" id="dateInput" oninput="validateDate()">
+            <div id="dateError" class="error"></div>
+            
+            <label>Phone Number (+62):</label>
+            <input type="text" id="phoneInput" oninput="validatePhoneNumber()">
+            <div id="phoneError" class="error"></div>
+            
+            <label>Password (min. 8 characters):</label>
+            <div class="password-container">
+                <input type="password" id="passwordInput">
+                <span class="toggle-password" onclick="togglePasswordVisibility()"><i class="fa fa-eye" aria-hidden="true"></i></span>
+            </div>
+            <div id="passwordError" class="error"></div>
+            
+            <label>URL:</label>
+            <input type="text" id="urlInput" oninput="validateURL()">
+            <div id="urlError" class="error"></div>
+            
+            <!-- Tombol Submit -->
+            <button type="submit">Submit</button>
+        </form>
+        
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+</html>
